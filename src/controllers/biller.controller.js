@@ -6,6 +6,7 @@ let organization = 'ENG';
 const fields_a = {
     'action': 'collect',
     'request_id': 'a32f',
+    'title': 'Org Select',
     'fields': [
         {
             'type': 'selector',
@@ -30,6 +31,7 @@ const fields_a = {
 const fields_b = {
     'action': 'collect',
     'request_id': 'a32fe',
+    'title': 'Personal Info',
     'fields': [
         {
             'type': 'email',
