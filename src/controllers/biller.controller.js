@@ -152,7 +152,7 @@ const createResponsePayloadHash = (integrationKey, date, body) => {
         .digest('hex');
 };
 
-const sendSuccessfulResponse = (body) => {
+const sendSuccessfulResponse = (res, body) => {
     const date = new Date().toISOString();
     const hash = createResponsePayloadHash(SECRET_KEY, date, body);
     res.set('date', date);
@@ -169,7 +169,7 @@ const getFields = (req, res) => {
             .send({ message: 'Invalid request sent' });
     }
 
-    sendSuccessfulResponse(fields_a);
+    sendSuccessfulResponse(res, fields_a);
 };
 
 const processFields = (req, res) => {
@@ -229,7 +229,7 @@ const processFields = (req, res) => {
         }
     };
 
-    return sendSuccessfulResponse(response);
+    return sendSuccessfulResponse(res, response);
 };
 
 module.exports = {
