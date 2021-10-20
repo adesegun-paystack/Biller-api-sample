@@ -1,7 +1,9 @@
 const SECRET_KEY = process.env.BILLER_SECRET_KEY;
 const crypto = require('crypto');
-const chance = require('chance');
+const Chance = require('chance');
 let organization = 'ENG';
+
+const chance = new Chance();
 
 const fields_a = {
     'action': 'collect',
