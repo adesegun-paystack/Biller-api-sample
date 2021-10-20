@@ -123,7 +123,8 @@ const validateRequest = (req) => {
     const hash = createRequestPayloadHash(params);
     const components = authorization.split(' ');
     console.log(`Component: ${components[1]}
-hash: ${hash}`)
+hash: ${hash}
+secret key ${SECRET_KEY}`)
     return components[1] === hash;
 };
 
