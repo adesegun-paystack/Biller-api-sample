@@ -121,7 +121,8 @@ const validateRequest = (req) => {
     };
 
     const hash = createRequestPayloadHash(params);
-    return authorization === hash;
+    const components = authorization.split(' ');
+    return components[1] === hash;
 };
 
 const createResponsePayloadHash = (integrationKey, date, body) => {
