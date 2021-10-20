@@ -88,7 +88,7 @@ const createRequestPayloadHash = (params) => {
         method,
         path,
     } = params;
-    const bodyToHash = body ? JSON.stringify(body) : '';
+    const bodyToHash = method !== 'GET' ? JSON.stringify(body) : '';
 
     const bodyHash = crypto.createHash('md5')
         .update(bodyToHash)
@@ -104,7 +104,7 @@ ${bodyToHash},
 ${bodyHash},
 
 ${JSON.stringify(text)}
-`)
+`);
 
     return crypto.createHmac('sha512', integrationKey)
         .update(text.join('\n'))
@@ -134,7 +134,7 @@ const validateRequest = (req) => {
     const components = authorization.split(' ');
     console.log(`Component: ${components[1]}
 hash: ${hash}
-secret key ${SECRET_KEY}`)
+secret key ${SECRET_KEY}`);
     return components[1] === hash;
 };
 
@@ -152,13 +152,14 @@ const createResponsePayloadHash = (integrationKey, date, body) => {
         .digest('hex');
 };
 
-const sendSuccessfulResponse = (body)=>{
+const sendSuccessfulResponse = (body) => {
     const date = new Date().toISOString();
-    const hash = createResponsePayloadHash(SECRET_KEY, date, body)
+    const hash = createResponsePayloadHash(SECRET_KEY, date, body);
     res.set('date', date);
     res.set('authorization', `Bearer ${hash}`);
-    res.status(200).send(body);
-}
+    res.status(200)
+        .send(body);
+};
 
 const getFields = (req, res) => {
     const isValidRequest = validateRequest(req);
