@@ -189,7 +189,7 @@ const processFields = (req, res) => {
     if (request_id === 'a32f') {
         organization = fields.organization_selector;
 
-        return sendSuccessfulResponse(fields_b);
+        return sendSuccessfulResponse(res, fields_b);
     }
 
     const {
