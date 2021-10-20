@@ -96,6 +96,16 @@ const createRequestPayloadHash = (params) => {
 
     const text = [method, path, date, bodyHash];
 
+    console.log(`
+${JSON.stringify(params)}
+
+${bodyToHash},
+
+${bodyHash},
+
+${JSON.stringify(text)}
+`)
+
     return crypto.createHmac('sha512', integrationKey)
         .update(text.join('\n'))
         .digest('hex');
