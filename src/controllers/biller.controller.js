@@ -174,7 +174,7 @@ const createResponsePayloadHash = (integrationKey, date, body) => {
 const sendSuccessfulResponse = (res, body) => {
     const date = new Date().toISOString();
     const hash = createResponsePayloadHash(SECRET_KEY, date, body);
-    console.log('hash', hash);
+    console.log('response_hash', hash);
     res.set('date', date);
     res.set('authorization', `Bearer ${hash}`);
     res.status(200)
