@@ -165,7 +165,7 @@ const createResponsePayloadHash = (integrationKey, date, body) => {
     
     const text = [date, bodyHash];
     console.log('text', text);
-    
+
     return crypto.createHmac('sha512', integrationKey)
         .update(text.join('\n'))
         .digest('hex');
@@ -174,6 +174,7 @@ const createResponsePayloadHash = (integrationKey, date, body) => {
 const sendSuccessfulResponse = (res, body) => {
     const date = new Date().toISOString();
     const hash = createResponsePayloadHash(SECRET_KEY, date, body);
+    console.log('hash', hash);
     res.set('date', date);
     res.set('authorization', `Bearer ${hash}`);
     res.status(200)
