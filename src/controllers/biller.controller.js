@@ -166,9 +166,12 @@ const createResponsePayloadHash = (integrationKey, date, body) => {
     const text = [date, bodyHash];
     console.log('text', text);
 
-    return crypto.createHmac('sha512', integrationKey)
+    const hash = crypto.createHmac('sha512', integrationKey)
         .update(text.join('\n'))
         .digest('hex');
+    
+    ßconsole.log('response_hash', hash);
+    return hash;
 };
 
 const sendSuccessfulResponse = (res, body) => {
