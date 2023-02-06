@@ -170,7 +170,7 @@ const createResponsePayloadHash = (integrationKey, date, body) => {
         .update(text.join('\n'))
         .digest('hex');
     
-    ßconsole.log('response_hash', hash);
+    console.log('response_hash', hash);
     return hash;
 };
 
