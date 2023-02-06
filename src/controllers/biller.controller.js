@@ -129,7 +129,7 @@ const validateRequest = (req) => {
         body,
         date,
         method,
-        path: originalUrl,
+        path: originalUrl.split('?')[0],
     };
 
     const hash = createRequestPayloadHash(params);
