@@ -152,14 +152,20 @@ secret key ${SECRET_KEY}`);
 };
 
 const createResponsePayloadHash = (integrationKey, date, body) => {
+    console.log('-----start creating response payload hash-----')
+    console.log('body', body);
     const bodyToHash = JSON.stringify(body);
+
+    console.log('integrationKey', integrationKey);
 
     const bodyHash = crypto.createHash('md5')
         .update(bodyToHash)
         .digest('hex');
 
+    
     const text = [date, bodyHash];
-
+    console.log('text', text);
+    
     return crypto.createHmac('sha512', integrationKey)
         .update(text.join('\n'))
         .digest('hex');
