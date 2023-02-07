@@ -28,18 +28,18 @@ const fields_a = {
             }
         }
     ]
-    // ,
-    // 'metadata': {
-    //     'sample_md_1': 'sample md value 1',
-    //     'sample_md_2': 'sample md value 2',
-    //     'custom_fields': [
-    //         {
-    //             'display_name': 'Invoice ID',
-    //             'variable_name': 'Invoice ID',
-    //             'value': '209'
-    //         }
-    //     ]
-    // }
+    ,
+    'metadata': {
+        'sample_md_1': 'sample md value 1',
+        'sample_md_2': 'sample md value 2',
+        'custom_fields': [
+            {
+                'display_name': 'Invoice ID',
+                'variable_name': 'Invoice ID',
+                'value': '209'
+            }
+        ]
+    }
 };
 
 const fields_b = {
@@ -178,7 +178,6 @@ const createResponsePayloadHash = (integrationKey, date, body) => {
 const sendSuccessfulResponse = (res, body) => {
     const date = new Date().toISOString();
     const hash = createResponsePayloadHash(SECRET_KEY, date, body);
-    console.log('response_hash', hash);
     res.set('date', date);
     res.set('authorization', `Bearer ${hash}`);
     res.status(200)
