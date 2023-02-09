@@ -28,18 +28,6 @@ const fields_a = {
             }
         }
     ]
-    ,
-    'metadata': {
-        'sample_md_1': 'sample md value 1',
-        'sample_md_2': 'sample md value 2',
-        'custom_fields': [
-            {
-                'display_name': 'Invoice ID',
-                'variable_name': 'Invoice ID',
-                'value': '209'
-            }
-        ]
-    }
 };
 
 const fields_b = {
@@ -91,7 +79,18 @@ const fields_b = {
                 ]
             }
         }
-    ]
+    ],
+    'metadata': {
+        'sample_md_1': 'sample md value 1',
+        'sample_md_2': 'sample md value 2',
+        'custom_fields': [
+            {
+                'display_name': 'Invoice ID',
+                'variable_name': 'Invoice ID',
+                'value': '209'
+            }
+        ]
+    }
 };
 
 const createRequestPayloadHash = (params) => {
@@ -196,6 +195,7 @@ const getFields = (req, res) => {
 };
 
 const processFields = (req, res) => {
+    console.log('-----start processing fields-----')
     const isValidRequest = validateRequest(req);
     if (!isValidRequest) {
         return res.status(401)
@@ -208,7 +208,7 @@ const processFields = (req, res) => {
             fields,
         }
     } = req;
-
+    console.log('body', body)
     if (request_id === 'a32f') {
         organization = fields.organization_selector;
 
@@ -251,6 +251,8 @@ const processFields = (req, res) => {
             identifier: chance.guid(),
         }
     };
+
+    console.log('response', response);
 
     return sendSuccessfulResponse(res, response);
 };
