@@ -209,7 +209,6 @@ const processFields = (req, res) => {
         }
     } = req;
 
-    console.log('body', body);
 
     if (request_id === 'a32f') {
         organization = fields.organization_selector;
