@@ -181,6 +181,10 @@ const sendSuccessfulResponse = (res, body) => {
     res.set('authorization', `Bearer ${hash}`);
     res.status(200)
         .send(body);
+
+    console.log('-----start logging response object-----')
+    console.log(res)
+    console.log('-----end processing fields-----')
 };
 
 const getFields = (req, res) => {
