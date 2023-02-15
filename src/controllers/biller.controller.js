@@ -208,43 +208,62 @@ const processFields = (req, res) => {
             fields,
         }
     } = req;
-    console.log('body', body)
+
+    console.log('body', body);
+
     if (request_id === 'a32f') {
         organization = fields.organization_selector;
-
         return sendSuccessfulResponse(res, fields_b);
     }
 
-    const {
-        customer_email,
-        customer_name,
-        date_of_birth,
-        origin_country
-    } = fields;
+    // const {
+    //     customer_email,
+    //     customer_name,
+    //     date_of_birth,
+    //     origin_country
+    // } = fields;
 
     const response = {
         action: 'process',
+        // fields: [
+        //     {
+        //         title: 'Customer Name',
+        //         value: customer_name
+        //     },
+        //     {
+        //         title: 'Customer Email',
+        //         value: customer_email
+        //     },
+        //     {
+        //         title: 'Customer Date of Birth',
+        //         value: date_of_birth
+        //     },
+        //     {
+        //         title: 'Customer Country of Origin',
+        //         value: origin_country === 'SA' ? 'South Africa' : 'Nigeria'
+        //     },
+        //     {
+        //         title: 'Customer Organization',
+        //         value: organization === 'ENG' ? 'Engineering' : 'Product'
+        //     },
+        // ],
         fields: [
             {
-                title: 'Customer Name',
-                value: customer_name
+                title: "Customer Email",
+                value: "service@lane.com"
             },
             {
-                title: 'Customer Email',
-                value: customer_email
+                title: "Customer Name",
+                value: "Service Lane"
             },
             {
-                title: 'Customer Date of Birth',
-                value: date_of_birth
+                title: "Date of birth",
+                value: "14-03-1997"
             },
             {
-                title: 'Customer Country of Origin',
-                value: origin_country === 'SA' ? 'South Africa' : 'Nigeria'
-            },
-            {
-                title: 'Customer Organization',
-                value: organization === 'ENG' ? 'Engineering' : 'Product'
-            },
+                title: "Country of Origin",
+                value: "NG"
+            }
         ],
         amount: 200,
         meta: {
