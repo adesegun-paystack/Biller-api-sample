@@ -183,7 +183,7 @@ const sendSuccessfulResponse = (res, body) => {
         .send(body);
 
     console.log('-----start logging response object-----')
-    console.log(res)
+    console.log(res.headers)
     console.log('-----end processing fields-----')
 };
 
