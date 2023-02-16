@@ -179,7 +179,6 @@ const sendSuccessfulResponse = (res, body) => {
     const hash = createResponsePayloadHash(SECRET_KEY, date, body);
     res.set('date', date);
     res.set('x-dd-s', date);
-    res.setHeaders('x-dd-sh', date);
     res.set('authorization', `Bearer ${hash}`);
     res.status(200)
         .send(body);
