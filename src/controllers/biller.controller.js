@@ -265,7 +265,7 @@ const processFields = (req, res) => {
         //         value: "NG"
         //     }
         // ],
-        amount: 200,
+        amount: 20000,
         meta: {
             identifier: chance.guid(),
         }
