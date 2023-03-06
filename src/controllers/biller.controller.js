@@ -135,6 +135,9 @@ const validateRequest = (req) => {
         originalUrl,
     } = req;
 
+    console.log('-----Get the Original URL-----')
+    console.log(originalUrl)
+
     const params = {
         integrationKey: SECRET_KEY,
         body,
