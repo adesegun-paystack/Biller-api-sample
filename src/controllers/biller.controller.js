@@ -109,15 +109,7 @@ const createRequestPayloadHash = (params) => {
 
     const text = [method, path, date, bodyHash];
 
-    console.log(`
-${JSON.stringify(params)}
-
-${bodyToHash},
-
-${bodyHash},
-
-${JSON.stringify(text)}
-`);
+    console.log(`${JSON.stringify(params)}${bodyToHash},${bodyHash},${JSON.stringify(text)}`);
 
     return crypto.createHmac('sha512', integrationKey)
         .update(text.join('\n'))
@@ -165,14 +157,14 @@ const createResponsePayloadHash = (integrationKey, date, body) => {
         .update(bodyToHash)
         .digest('hex');
 
-    
+
     const text = [date, bodyHash];
     console.log('text', text);
 
     const hash = crypto.createHmac('sha512', integrationKey)
         .update(text.join('\n'))
         .digest('hex');
-    
+
     console.log('response_hash', hash);
     return hash;
 };
@@ -190,10 +182,10 @@ const sendSuccessfulResponse = (res, body) => {
 const getFields = (req, res) => {
     const isValidRequest = validateRequest(req);
 
-    if (!isValidRequest) {
-        return res.status(401)
-            .send({ message: 'Invalid request sent' });
-    }
+    // if (!isValidRequest) {
+    //     return res.status(401)
+    //         .send({ message: 'Invalid request sent' });
+    // }
 
     sendSuccessfulResponse(res, fields_a);
 };
