@@ -155,8 +155,8 @@ const createResponsePayloadHash = (integrationKey, date, body) => {
         .update(bodyToHash)
         .digest('hex');
 
-
-    const text = [date, bodyHash];
+    const dateToGMT = new Date(date).toGMTString();
+    const text = [dateToGMT, bodyHash];
     console.log('text', text);
 
     const hash = crypto.createHmac('sha512', integrationKey)
