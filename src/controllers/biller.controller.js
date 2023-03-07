@@ -135,8 +135,7 @@ const validateRequest = (req) => {
         body,
         date,
         method,
-        // path: originalUrl.split('?')[0],
-        path: originalUrl,
+        path: originalUrl.split('?')[0],
     };
 
     const hash = createRequestPayloadHash(params);
@@ -181,12 +180,12 @@ const sendSuccessfulResponse = (res, body) => {
 };
 
 const getFields = (req, res) => {
-    // const isValidRequest = validateRequest(req);
+    const isValidRequest = validateRequest(req);
 
-    // if (!isValidRequest) {
-    //     return res.status(401)
-    //         .send({ message: 'Invalid request sent' });
-    // }
+    if (!isValidRequest) {
+        return res.status(401)
+            .send({ message: 'Invalid request sent' });
+    }
 
     sendSuccessfulResponse(res, fields_a);
 };
