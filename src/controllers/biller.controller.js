@@ -138,9 +138,8 @@ const validateRequest = (req) => {
     const hash = createRequestPayloadHash(params);
     const components = authorization.split(' ');
 
-    console.log(`Component: ${components[1]}
-                hash: ${hash}
-                secret key ${SECRET_KEY}`);
+    console.log(`pos middleware hash: ${components[1]}
+                hash: ${hash}`);
 
 
     return components[1] === hash;
