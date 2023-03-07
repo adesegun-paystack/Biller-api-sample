@@ -127,28 +127,27 @@ const validateRequest = (req) => {
         originalUrl,
     } = req;
 
-    console.log('-----Get the Original URL-----')
-    console.log(originalUrl)
-
     const params = {
         integrationKey: SECRET_KEY,
         body,
         date,
         method,
-        path: originalUrl.split('?')[0],
+        path: originalUrl,
     };
 
     const hash = createRequestPayloadHash(params);
     const components = authorization.split(' ');
+
     console.log(`Component: ${components[1]}
-            hash: ${hash}
-            secret key ${SECRET_KEY}`);
-                return components[1] === hash;
-            };
+                hash: ${hash}
+                secret key ${SECRET_KEY}`);
+
+
+    return components[1] === hash;
+};
+
 
 const createResponsePayloadHash = (integrationKey, date, body) => {
-    console.log('-----start creating response payload hash-----')
-    console.log('body', body);
     const bodyToHash = JSON.stringify(body);
 
     console.log('integrationKey', integrationKey);
