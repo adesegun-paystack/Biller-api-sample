@@ -135,16 +135,17 @@ const validateRequest = (req) => {
         body,
         date,
         method,
-        path: originalUrl.split('?')[0],
+        // path: originalUrl.split('?')[0],
+        path: originalUrl,
     };
 
     const hash = createRequestPayloadHash(params);
     const components = authorization.split(' ');
     console.log(`Component: ${components[1]}
-hash: ${hash}
-secret key ${SECRET_KEY}`);
-    return components[1] === hash;
-};
+            hash: ${hash}
+            secret key ${SECRET_KEY}`);
+                return components[1] === hash;
+            };
 
 const createResponsePayloadHash = (integrationKey, date, body) => {
     console.log('-----start creating response payload hash-----')
@@ -180,7 +181,7 @@ const sendSuccessfulResponse = (res, body) => {
 };
 
 const getFields = (req, res) => {
-    const isValidRequest = validateRequest(req);
+    // const isValidRequest = validateRequest(req);
 
     // if (!isValidRequest) {
     //     return res.status(401)
