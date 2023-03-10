@@ -136,6 +136,7 @@ const validateRequest = (req) => {
     };
 
     const hash = createRequestPayloadHash(params);
+
     const components = authorization.split(' ');
 
     console.log(`pos middleware hash: ${components[1]}
@@ -178,6 +179,18 @@ const sendSuccessfulResponse = (res, body) => {
 };
 
 const getFields = (req, res) => {
+
+    const {
+        headers: {
+            authorization,
+        }
+    } = req;
+
+    if (!authorization) {
+        return res.status(401)
+            .send({ message: 'Please provide a valid authorization header' });
+    }
+
     const isValidRequest = validateRequest(req);
 
     if (!isValidRequest) {
