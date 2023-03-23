@@ -244,16 +244,16 @@ const processFields = (req, res) => {
         ],
         amount: 20000,
         metadata: {
-        'sample_md_1': 'sample md value 1',
-        'sample_md_2': 'sample md value 2',
-        'custom_fields': [
-            {
-                'display_name': 'Invoice ID',
-                'variable_name': 'Invoice ID',
-                'value': '209'
-            }
-        ]
-    },
+            'sample_md_1': 'sample md value 1',
+            'sample_md_2': 'sample md value 2',
+            'custom_fields': [
+                {
+                    'display_name': 'Invoice ID',
+                    'variable_name': 'Invoice ID',
+                    'value': '209'
+                }
+            ]
+        },
         meta: {
             identifier: chance.guid(),
         }
