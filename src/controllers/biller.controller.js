@@ -79,18 +79,7 @@ const fields_b = {
                 ]
             }
         }
-    ],
-    'metadata': {
-        'sample_md_1': 'sample md value 1',
-        'sample_md_2': 'sample md value 2',
-        'custom_fields': [
-            {
-                'display_name': 'Invoice ID',
-                'variable_name': 'Invoice ID',
-                'value': '209'
-            }
-        ]
-    }
+    ]
 };
 
 const createRequestPayloadHash = (params) => {
@@ -253,25 +242,18 @@ const processFields = (req, res) => {
                 value: organization === 'ENG' ? 'Engineering' : 'Product'
             },
         ],
-        // fields: [
-        //     {
-        //         title: "Customer Email",
-        //         value: "service@lane.com"
-        //     },
-        //     {
-        //         title: "Customer Name",
-        //         value: "Service Lane"
-        //     },
-        //     {
-        //         title: "Date of birth",
-        //         value: "14-03-1997"
-        //     },
-        //     {
-        //         title: "Country of Origin",
-        //         value: "NG"
-        //     }
-        // ],
         amount: 20000,
+        metadata: {
+        'sample_md_1': 'sample md value 1',
+        'sample_md_2': 'sample md value 2',
+        'custom_fields': [
+            {
+                'display_name': 'Invoice ID',
+                'variable_name': 'Invoice ID',
+                'value': '209'
+            }
+        ]
+    },
         meta: {
             identifier: chance.guid(),
         }
