@@ -182,21 +182,21 @@ const getFields = (req, res) => {
 
     const isValidRequest = validateRequest(req);
 
-    if (!isValidRequest) {
-        return res.status(401)
-            .send({ message: 'Invalid request sent on getFields' });
-    }
+  //  if (!isValidRequest) {
+  //      return res.status(401)
+  //          .send({ message: 'Invalid request sent on getFields' });
+   // }
 
     sendSuccessfulResponse(res, fields_a);
 };
 
 const processFields = (req, res) => {
     console.log('-----start processing fields-----')
-    const isValidRequest = validateRequest(req);
-    if (!isValidRequest) {
-        return res.status(401)
-            .send({ message: 'Invalid request sent on processFields' });
-    }
+//    const isValidRequest = validateRequest(req);
+ //   if (!isValidRequest) {
+ //       return res.status(401)
+   //         .send({ message: 'Invalid request sent on processFields' });
+  //  }
 
     const {
         body: {
