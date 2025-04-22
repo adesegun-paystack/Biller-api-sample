@@ -184,7 +184,7 @@ const getFields = (req, res) => {
 
     if (!isValidRequest) {
         return res.status(401)
-            .send({ message: 'Invalid request sent' });
+            .send({ message: 'Invalid request sent on getFields' });
     }
 
     sendSuccessfulResponse(res, fields_a);
@@ -195,7 +195,7 @@ const processFields = (req, res) => {
     const isValidRequest = validateRequest(req);
     if (!isValidRequest) {
         return res.status(401)
-            .send({ message: 'Invalid request sent' });
+            .send({ message: 'Invalid request sent on processFields' });
     }
 
     const {
